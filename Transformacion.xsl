@@ -3,59 +3,31 @@
   <xsl:template match="/">
     <html>
       <head>
-        <title>Ejer_01</title>
+        <title>Ejer_05</title>
+        <style type="text/css">
+        .title{
+        color: #ff0000;
+        }
+        </style>
       </head>
       <body>
-        <table border="1">
-          <tr>
-            <th>Titulo</th>
-            <th>Artista</th>
-            <th>Año</th>
-          </tr>
+        <h1>CD Catalog</h1>
+        <ol type="1">
           <xsl:for-each select="//cd">
-            <xsl:choose>
-              <xsl:when test="year&lt;1980">
-                <tr bgcolor="#FFFF00">
-                  <td>
-                    <xsl:value-of select="title"/>
-                  </td>
-                  <td>
-                    <xsl:value-of select="artist"/>
-                  </td>
-                  <td>
-                    <xsl:value-of select="year"/>
-                  </td>
-                </tr>
-              </xsl:when>
-              <xsl:when test="year&gt;1979 and year&lt;1990">
-                <tr bgcolor="#ADFF2F">
-                  <td>
-                    <xsl:value-of select="title"/>
-                  </td>
-                  <td>
-                    <xsl:value-of select="artist"/>
-                  </td>
-                  <td>
-                    <xsl:value-of select="year"/>
-                  </td>
-                </tr>
-              </xsl:when>
-              <xsl:when test="year&gt;1989">
-                <tr bgcolor="#000080">
-                  <td>
-                    <xsl:value-of select="title"/>
-                  </td>
-                  <td>
-                    <xsl:value-of select="artist"/>
-                  </td>
-                  <td>
-                    <xsl:value-of select="year"/>
-                  </td>
-                </tr>
-              </xsl:when>
-            </xsl:choose>
+            <li>
+              <div class="title">
+                <xsl:value-of select="title"/>
+              </div>
+              <xsl:value-of select="artist"/>
+              <xsl:text>, </xsl:text>
+              <xsl:value-of select="year"/>
+              <br/>
+              <xsl:text>$</xsl:text>
+              <xsl:value-of select="price"/>
+            </li>
+            <br/>
           </xsl:for-each>
-        </table>
+        </ol>
       </body>
     </html>
   </xsl:template>
