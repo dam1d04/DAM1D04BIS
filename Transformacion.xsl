@@ -6,21 +6,27 @@
         <title>Ejer_01</title>
       </head>
       <body>
-        <table>
+        <table border="1">
           <tr>
             <th>Titulo</th>
             <th>Artista</th>
             <th>Año</th>
           </tr>
-          <tr>
-            <xsl:for-each select="//cd">
+          <xsl:for-each select="//cd">
+          <xsl:if test="year&gt;1980">
+            <tr>
               <td>
                 <xsl:value-of select="title"/>
               </td>
-              <td><xsl:value-of select="artist"/></td>
-              <td><xsl:value-of select="year"/></td>
-            </xsl:for-each>
+              <td>
+                <xsl:value-of select="artist"/>
+              </td>
+              <td>
+                <xsl:value-of select="year"/>
+              </td>
             </tr>
+            </xsl:if>
+          </xsl:for-each>
         </table>
       </body>
     </html>
