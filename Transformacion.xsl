@@ -13,20 +13,47 @@
             <th>Año</th>
           </tr>
           <xsl:for-each select="//cd">
-          <xsl:sort select="year" />
-          <xsl:if test="year&gt;1979 and year&lt;1990">
-            <tr>
-              <td>
-                <xsl:value-of select="title"/>
-              </td>
-              <td>
-                <xsl:value-of select="artist"/>
-              </td>
-              <td>
-                <xsl:value-of select="year"/>
-              </td>
-            </tr>
-            </xsl:if>
+            <xsl:choose>
+              <xsl:when test="year&lt;1980">
+                <tr bgcolor="#FFFF00">
+                  <td>
+                    <xsl:value-of select="title"/>
+                  </td>
+                  <td>
+                    <xsl:value-of select="artist"/>
+                  </td>
+                  <td>
+                    <xsl:value-of select="year"/>
+                  </td>
+                </tr>
+              </xsl:when>
+              <xsl:when test="year&gt;1979 and year&lt;1990">
+                <tr bgcolor="#ADFF2F">
+                  <td>
+                    <xsl:value-of select="title"/>
+                  </td>
+                  <td>
+                    <xsl:value-of select="artist"/>
+                  </td>
+                  <td>
+                    <xsl:value-of select="year"/>
+                  </td>
+                </tr>
+              </xsl:when>
+              <xsl:when test="year&gt;1989">
+                <tr bgcolor="#000080">
+                  <td>
+                    <xsl:value-of select="title"/>
+                  </td>
+                  <td>
+                    <xsl:value-of select="artist"/>
+                  </td>
+                  <td>
+                    <xsl:value-of select="year"/>
+                  </td>
+                </tr>
+              </xsl:when>
+            </xsl:choose>
           </xsl:for-each>
         </table>
       </body>
